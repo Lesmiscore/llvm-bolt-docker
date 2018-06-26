@@ -3,7 +3,8 @@ FROM ubuntu
 ARG JOBS=4
 
 RUN apt-get update && \
-    apt-get install -y build-essential git cmake ninja-build && \
+    apt-get install -y build-essential git cmake ninja-build python && \
+    apt-get upgrade -y && \
     mkdir /build && \
     rm -rf /var/cache/apt/archives /var/lib/apt/lists
 
@@ -15,8 +16,6 @@ RUN git clone https://github.com/llvm-mirror/llvm llvm && \
     git clone https://github.com/facebookincubator/BOLT llvm-bolt && \
     cd .. &&  \
     patch -p 1 < tools/llvm-bolt/llvm.patch
-
-WORKDIR llvm
 
 RUN mkdir build && \
     cd build && \
