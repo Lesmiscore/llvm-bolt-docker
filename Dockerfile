@@ -14,8 +14,8 @@ RUN git clone https://github.com/llvm-mirror/llvm llvm && \
     git clone https://github.com/facebookincubator/BOLT llvm-bolt && \
     cd .. &&  \
     patch -p 1 < tools/llvm-bolt/llvm.patch && \
-    echo 'set(CMAKE_C_FLAGS "--param ggc-min-expand=1 --param ggc-min-heapsize=32768")' >> CMakeLists.txt && \
-    echo 'set(CMAKE_CXX_FLAGS "--param ggc-min-expand=1 --param ggc-min-heapsize=32768")' >> CMakeLists.txt
+    echo 'set(CMAKE_C_FLAGS "-O0 --param ggc-min-expand=1 --param ggc-min-heapsize=32768")' >> CMakeLists.txt && \
+    echo 'set(CMAKE_CXX_FLAGS "-O0 --param ggc-min-expand=1 --param ggc-min-heapsize=32768")' >> CMakeLists.txt
 
 ARG JOBS=4
 
