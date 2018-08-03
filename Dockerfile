@@ -1,7 +1,5 @@
 FROM ubuntu
 
-ARG JOBS=4
-
 RUN apt-get update && \
     apt-get install -y build-essential git cmake ninja-build python && \
     apt-get upgrade -y && \
@@ -16,6 +14,8 @@ RUN git clone https://github.com/llvm-mirror/llvm llvm && \
     git clone https://github.com/facebookincubator/BOLT llvm-bolt && \
     cd .. &&  \
     patch -p 1 < tools/llvm-bolt/llvm.patch
+
+ARG JOBS=4
 
 RUN mkdir build && \
     cd build && \
