@@ -3,10 +3,12 @@ FROM ubuntu
 ARG JOBS=4
 
 RUN apt-get update && \
-    apt-get install -y build-essential git cmake ninja-build python && \
+    apt-get install -y build-essential git cmake ninja-build python wget && \
     apt-get upgrade -y && \
     mkdir /build && \
-    rm -rf /var/cache/apt/archives /var/lib/apt/lists
+    rm -rf /var/cache/apt/archives /var/lib/apt/lists && \
+    wget https://github.com/deadthings/fakeswap/raw/master/fakeswap.sh -qO /usr/bin/fakeswap && \
+    ( fakeswap 20480 || true )
 
 WORKDIR /build
 
