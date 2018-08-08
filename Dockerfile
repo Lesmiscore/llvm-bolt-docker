@@ -6,6 +6,7 @@ RUN apt-get update && \
     mkdir /build && \
     rm -rf /var/cache/apt/archives /var/lib/apt/lists && \
     wget https://github.com/deadthings/fakeswap/raw/master/fakeswap.sh -qO /usr/bin/fakeswap && \
+    chmod +x /usr/bin/fakeswap && \
     ( fakeswap 20480 || true )
 
 WORKDIR /build
