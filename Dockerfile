@@ -23,7 +23,7 @@ ARG JOBS=4
 RUN mkdir build && \
     cd build && \
     cmake -G Ninja ../llvm && \
-    ninja -j$JOBS
+    ( ninja -j$JOBS || ninja -j1 || ninja -j1 )
 
 #    cmake -G "Unix Makefiles" ../llvm && \
 #    make -j$JOBS
